@@ -32,7 +32,7 @@ export class ShowDataService {
     try{
       const data: any = await this.httpClient.get('https://api.tvmaze.com/singlesearch/shows?q='+show.title).toPromise();
       show.summary = data.summary;
-      show.image = data.image.medium.replace('http', 'https');
+      show.image = data.image.medium; //replace('http', 'https') entfernt, da JSON-String nun mit https
       this.detailShow = show;
     } catch (e) {
       alert('Es wurde leider keine passende Show gefunden!');
